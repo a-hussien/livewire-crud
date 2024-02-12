@@ -19,17 +19,25 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              class="border-b transition duration-300 ease-in-out hover:bg-neutral-100">
-              <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-              <td class="whitespace-nowrap px-6 py-4">Mark</td>
-              <td class="whitespace-nowrap px-6 py-4">Otto</td>
-              <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-              <td class="whitespace-nowrap px-6 py-4">@mdo</td>
+            @forelse ($students as $student)
+                <tr class="border-b transition duration-300 ease-in-out hover:bg-blue-50">
+                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $student->id }}</td>
+                    <td class="whitespace-nowrap px-6 py-4">{{ $student->name }}</td>
+                    <td class="whitespace-nowrap px-6 py-4">{{ $student->email }}</td>
+                    <td class="whitespace-nowrap px-6 py-4">{{ $student->class->name }}</td>
+                    <td class="whitespace-nowrap px-6 py-4">{{ $student->section->name }}</td>
+                </tr>
+            @empty
+            <tr class="border-b transition duration-300 ease-in-out hover:bg-blue-100">
+              <td colspan="5" class="whitespace-nowrap px-6 py-4 font-medium">No Data.</td>
             </tr>
+            @endforelse
           </tbody>
         </table>
       </div>
     </div>
   </div>
+    <div class="mx-4 md:mx-0 mt-0 mb-4">
+        {{ $students->links(data: ['scrollTo' => false]) }}
+    </div>
 </div>
