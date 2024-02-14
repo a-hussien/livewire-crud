@@ -19,6 +19,14 @@ class Student extends Model
         'email',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $model->name = ucfirst($model->name);
+        });
+    }
+
     public function class(): BelongsTo
     {
         return $this->belongsTo(Classes::class, 'class_id');
