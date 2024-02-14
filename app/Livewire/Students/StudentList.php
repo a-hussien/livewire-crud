@@ -13,6 +13,14 @@ class StudentList extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
+
+    public function deleteStudent($studentId)
+    {
+        Student::find($studentId)->delete();
+
+        return $this->redirect(route('students.index'));
+    }
+
     public function render()
     {
         return view('livewire.students.index', [
