@@ -20,6 +20,7 @@
                 <th scope="col" class="px-6 py-4">Email</th>
                 <th scope="col" class="px-6 py-4">Class</th>
                 <th scope="col" class="px-6 py-4">Section</th>
+                <th scope="col" class="px-6 py-4">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,10 +31,31 @@
                         <td class="whitespace-nowrap px-6 py-4">{{ $student->email }}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $student->class->name }}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $student->section->name }}</td>
+                        <td class="whitespace-nowrap px-6 py-4">
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-transparent hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+
+                                        <div class="ms-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="fill-current h-4 w-4" viewBox="0 0 16 16">
+                                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                                              </svg>
+                                        </div>
+                                    </button>
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <x-dropdown-link :href="route('students.edit', $student->id)" wire:navigate >
+                                        {{ __('Edit') }}
+                                    </x-dropdown-link>
+
+                                </x-slot>
+                            </x-dropdown>
+                        </td>
                     </tr>
                 @empty
                 <tr class="border-b transition duration-300 ease-in-out hover:bg-blue-100">
-                <td colspan="5" class="whitespace-nowrap px-6 py-4 font-medium">No Data.</td>
+                <td colspan="6" class="whitespace-nowrap px-6 py-4 font-medium">No Data.</td>
                 </tr>
                 @endforelse
             </tbody>

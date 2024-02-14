@@ -5,6 +5,7 @@ use App\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Students\StudentList;
 use App\Livewire\Students\StudentCreate;
+use App\Livewire\Students\StudentUpdate;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/students', StudentList::class)->name('students.index');
     Route::get('/students/create', StudentCreate::class)->name('students.create');
+    Route::get('/students/{student}/edit', StudentUpdate::class)->name('students.edit');
 });
 
 require __DIR__.'/auth.php';
