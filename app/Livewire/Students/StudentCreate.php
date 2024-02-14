@@ -3,46 +3,24 @@
 namespace App\Livewire\Students;
 
 use App\Models\Classes;
-use App\Models\Section;
-use App\Models\Student;
 use Livewire\Component;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Validate;
+use App\Livewire\Forms\Student\CreateStudentForm;
 
 #[Title('Create Student')]
 class StudentCreate extends Component
 {
-    #[Validate('required|string|min:3')]
-    public $name;
+    public CreateStudentForm $form;
 
-    #[Validate('required|string|lowercase|email|max:255|unique:students,email,except,id')]
-    public $email;
-
-    #[Validate('required|integer', as: 'class')]
-    public $class_id;
-
-    #[Validate('required|integer', as: 'section')]
-    public $section_id;
-
-    public $sections = [];
-
-    public function updatedClassId($value)
+    // updated form class_id
+    public function updatedFormClassId($value)
     {
-        $this->sections = Section::where('class_id', $value)->get();
+        $this->form->updatedClassId($value);
     }
 
     public function createStudent()
     {
-        $this->validate();
-
-        Student::create($this->only([
-            'name',
-            'email',
-            'class_id',
-            'section_id',
-        ]));
-
-        $this->reset();
+        $this->form->store();
 
         return $this->redirect(route('students.index'));
     }

@@ -4,7 +4,7 @@
             {{ __('Students List') }}
         </h2>
 
-        <a href="{{route('students.create')}}" type="button" class="sm:-mt-7 p-1 px-4 bg-emerald-500 text-white rounded shadow-md float-right" wire:navigate >
+        <a href="{{route('students.create')}}" type="button" class="sm:-mt-7 sm:mr-4 p-1 px-5 bg-emerald-500 text-white rounded shadow-md float-right" wire:navigate >
             Create
         </a>
     </x-slot>

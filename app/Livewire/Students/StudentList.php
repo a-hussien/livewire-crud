@@ -15,7 +15,7 @@ class StudentList extends Component
 
     public function render()
     {
-        return view('livewire.students.index')->with([
+        return view('livewire.students.index', [
             'students' => Student::with(['class', 'section'])
                 ->paginate(10),
         ]);

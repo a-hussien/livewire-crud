@@ -11,7 +11,7 @@
                 <div class="container mx-auto">
                     <div class="border-b border-gray-900/10 py-2">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">
-                            Personal Information
+                            Student Information
                         </h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600">
                             Fill in the information below.
@@ -23,9 +23,9 @@
                                     Name
                                 </label>
                                 <div class="mt-2">
-                                    <input type="text" id="name" autocomplete="given-name" wire:model.live.debounce.500ms="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
-                                    @error('name')
-                                    <x-input-error :messages="$errors->get('name')" class="mt-1" />
+                                    <input type="text" id="name" autocomplete="given-name" wire:model.blur="form.name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
+                                    @error('form.name')
+                                    <x-input-error :messages="$errors->get('form.name')" class="mt-1" />
                                     @enderror
                                 </div>
                             </div>
@@ -36,11 +36,11 @@
                                 </label>
                                 <div class="mt-2">
                                     <input type="email" id="email" autocomplete="email"
-                                    wire:model.live.debounce.500ms="email"
+                                    wire:model.blur="form.email"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
 
-                                    @error('email')
-                                    <x-input-error :messages="$errors->get('email')" class="mt-1" />
+                                    @error('form.email')
+                                    <x-input-error :messages="$errors->get('form.email')" class="mt-1" />
                                     @enderror
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                     Class
                                 </label>
                                 <div class="mt-2">
-                                    <select id="class_id" wire:model.live="class_id"
+                                    <select id="class_id" wire:model.live="form.class_id"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
                                         <option>Select a class</option>
                                         @foreach ($classes as $class)
@@ -60,8 +60,8 @@
                                         @endforeach
                                     </select>
 
-                                    @error('class_id')
-                                    <x-input-error :messages="$errors->get('class_id')" class="mt-1" />
+                                    @error('form.class_id')
+                                    <x-input-error :messages="$errors->get('form.class_id')" class="mt-1" />
                                     @enderror
                                 </div>
                             </div>
@@ -71,18 +71,18 @@
                                     Section
                                 </label>
                                 <div class="mt-2">
-                                    <select id="section_id" wire:model="section_id"
+                                    <select id="section_id" wire:model="form.section_id"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
                                         <option>Select a section</option>
-                                        @foreach ($sections as $section)
+                                        @foreach ($form->sections as $section)
                                             <option value="{{$section->id}}">
                                                 {{ $section->name ." - ". $section->class->name }}
                                             </option>
                                         @endforeach
                                     </select>
 
-                                    @error('section_id')
-                                    <x-input-error :messages="$errors->get('section_id')" class="mt-1" />
+                                    @error('form.section_id')
+                                    <x-input-error :messages="$errors->get('form.section_id')" class="mt-1" />
                                     @enderror
                                 </div>
                             </div>
