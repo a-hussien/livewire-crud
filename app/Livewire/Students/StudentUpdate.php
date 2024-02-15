@@ -25,7 +25,10 @@ class StudentUpdate extends Component
     {
         $this->form->updateStudent($this->student);
 
-        return $this->redirect(route('students.index'));
+        // Dispatch browser event (toast)
+        $this->dispatch('toast', toast("success", "Student updated successfully."));
+
+        $this->redirectRoute('students.index', navigate: true);
     }
 
     public function mount($student)

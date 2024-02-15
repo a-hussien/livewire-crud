@@ -25,7 +25,7 @@
             </thead>
             <tbody>
                 @forelse ($students as $student)
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-blue-50">
+                    <tr wire:key="{{ $student->id }}" class="border-b transition duration-300 ease-in-out hover:bg-blue-50">
                         <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $student->id }}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $student->name }}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $student->email }}</td>

@@ -1,7 +1,9 @@
-import './bootstrap';
+import "./bootstrap";
 
-import Alpine from 'alpinejs';
+import Swal from "sweetalert2";
 
-window.Alpine = Alpine;
-
-Alpine.start();
+// Listening for Livewire events
+window.addEventListener("toast", (e) => {
+    let data = e.detail[0];
+    Swal.fire(data);
+});

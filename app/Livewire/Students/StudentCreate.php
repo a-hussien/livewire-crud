@@ -22,7 +22,10 @@ class StudentCreate extends Component
     {
         $this->form->store();
 
-        return $this->redirect(route('students.index'));
+        // Dispatch browser event (toast)
+        $this->dispatch('toast', toast("success", "Student created successfully."));
+
+        $this->redirectRoute('students.index', navigate: true);
     }
 
     public function render()
