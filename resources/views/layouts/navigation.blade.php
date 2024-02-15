@@ -19,6 +19,10 @@
                     <x-nav-link :href="route('students.index')" :active="request()->routeIs('students.index')" wire:navigate >
                         {{ __('Students') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')" wire:navigate >
+                        {{ __('Books') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +81,10 @@
 
             <x-responsive-nav-link :href="route('students.index')" :active="request()->routeIs('students.index')" wire:navigate >
                 {{ __('Students') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')" wire:navigate >
+                {{ __('Books') }}
             </x-responsive-nav-link>
         </div>
 

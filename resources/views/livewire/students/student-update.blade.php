@@ -35,9 +35,7 @@
                                     Email
                                 </label>
                                 <div class="mt-2">
-                                    <input type="email" id="email" autocomplete="email"
-                                    wire:model.blur="form.email"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
+                                    <input type="email" id="email" autocomplete="email" wire:model.blur="form.email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
 
                                     @error('form.email')
                                     <x-input-error :messages="$errors->get('form.email')" class="mt-1" />
@@ -50,13 +48,12 @@
                                     Class
                                 </label>
                                 <div class="mt-2">
-                                    <select id="class_id" wire:model.live="form.class_id"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
+                                    <select id="class_id" wire:model.live="form.class_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
                                         <option>Select a class</option>
                                         @foreach ($classes as $class)
-                                            <option value="{{$class->id}}">
-                                                {{$class->name}}
-                                            </option>
+                                        <option value="{{$class->id}}">
+                                            {{$class->name}}
+                                        </option>
                                         @endforeach
                                     </select>
 
@@ -71,13 +68,12 @@
                                     Section
                                 </label>
                                 <div class="mt-2">
-                                    <select id="section_id" wire:model="form.section_id"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
+                                    <select id="section_id" wire:model="form.section_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-100 sm:max-w-xl sm:text-sm sm:leading-6">
                                         <option>Select a section</option>
                                         @foreach ($form->sections as $section)
-                                            <option value="{{$section->id}}">
-                                                {{ $section->name ." - ". $section->class->name }}
-                                            </option>
+                                        <option value="{{$section->id}}">
+                                            {{ $section->name ." - ". $section->class->name }}
+                                        </option>
                                         @endforeach
                                     </select>
 
@@ -86,19 +82,17 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <div class="my-4 flex items-center justify-start gap-x-6">
                     <button type="submit" class="rounded-md bg-blue-500 px-7 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
-                        Save
+                        Update
                     </button>
-                    <a href="{{route('students.index')}}" type="button" class="rounded-md bg-gray-300 px-5 py-2 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300" wire:navigate >
+                    <a href="{{route('students.index')}}" type="button" class="rounded-md bg-gray-300 px-5 py-2 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300" wire:navigate>
                         Cancel
                     </a>
                 </div>
-
             </form>
         </div>
     </div>
