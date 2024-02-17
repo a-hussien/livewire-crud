@@ -8,7 +8,7 @@
 
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 my-4">
         <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div class="overflow-hidden" wire:loading.class="animate-pulse">
+            <div class="overflow-hidden">
                 <table class="min-w-full text-left text-sm font-light">
                     <thead class="border-b font-medium">
                         <tr>
@@ -17,7 +17,7 @@
                             <th scope="col" class="px-6 py-4">Published Date</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody wire:loading.class="animate-pulse">
                         @forelse ($books as $book)
                         <tr wire:key="{{ $book->id }}" class="border-b transition duration-300 ease-in-out hover:bg-blue-50">
                             <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $book->id }}</td>

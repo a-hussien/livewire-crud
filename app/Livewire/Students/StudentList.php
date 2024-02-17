@@ -45,28 +45,28 @@ class StudentList extends Component
         return $headers;
     }
 
+    // livewire lifecycle hook for any updated feild
     public function updated()
     {
         $this->validateOnly('search');
         $this->resetPage();
     }
 
-    public function deleteStudent($studentId)
+    public function deleteStudent(Student $student)
     {
-        Student::find($studentId)->delete();
+        $student->delete();
 
-        return $this->redirect(route('students.index'));
+        $this->redirectRoute('students.index', navigate: true);
     }
 
     public function render()
     {
         return view('livewire.students.index', [
+            'headers' => $this->setHeaders(),
             'students' => Student::with(['class', 'section'])
                 ->search($this->search)
                 ->orderBy($this->sortBy, $this->sortDirection)
                 ->paginate($this->perPage),
-
-            'headers' => $this->setHeaders(),
         ]);
     }
 }
