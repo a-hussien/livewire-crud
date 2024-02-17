@@ -4,19 +4,27 @@ namespace App\Models;
 
 use App\Models\Classes;
 use App\Models\Section;
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Student extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $fillable = [
         'class_id',
         'section_id',
         'name',
         'email',
+    ];
+
+    protected $searchable = [
+        'name',
+        'email',
+        'class.name',
+        'section.name',
     ];
 
     public static function boot()
