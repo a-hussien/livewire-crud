@@ -56,6 +56,24 @@ return [
             'throw' => false,
         ],
 
+        // Backup disk
+        'backup' => [
+            'driver' => 'local',
+            'root' => storage_path('app/' . env('APP_NAME', 'Laravel')),
+            'throw' => false,
+        ],
+
+        // google disk
+        'google' => [
+            'driver' => 'google',
+            'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+            'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+            'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+            'folder' => env('GOOGLE_DRIVE_FOLDER'),
+            //'teamDriveId' => env('GOOGLE_DRIVE_TEAM_DRIVE_ID'),
+            //'sharedFolderId' => env('GOOGLE_DRIVE_SHARED_FOLDER_ID'),
+        ],
+
     ],
 
     /*
